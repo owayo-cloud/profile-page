@@ -83,5 +83,34 @@ Copy code
 - **Installation**: Detailed steps to install and run the project, including setting up dependencies and running migrations.
 - **Usage**: Explains how to use the application, including API routes and controlle
 
+# For those using Tailwind
+## Install Tailwind CSS:
+### In your Laravel project, run the following commands:
 
+Install Laravel Mix and Tailwind:
+```bash
+npm install
+npm install tailwindcss
+npx tailwindcss init #Configure Tailwind
+```
 
+### Make sure your resources/css/app.css looks like this:
+
+**css**
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+## In webpack.mix.js, add Tailwind to the CSS pipeline:
+
+```js
+const mix = require('laravel-mix');
+
+mix.postCss('resources/css/app.css', 'public/css', [
+    require('tailwindcss'),
+]);
+```
+### Run the following command to compile your CSS:
+```bash
+npm run dev
+```
